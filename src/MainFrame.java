@@ -97,7 +97,7 @@ public class MainFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 operation = PLUS;
-                prev =
+                
             }
         });
         minusButton.addActionListener(new ActionListener() {
@@ -248,10 +248,10 @@ public class MainFrame {
                 result = (Double.parseDouble(mainLabel.getText()))*(Double.parseDouble(mainLabel.getText()));
                 break;
             case CB:
-
+                result = (Double.parseDouble(mainLabel.getText()))*(Double.parseDouble(mainLabel.getText()))*(Double.parseDouble(mainLabel.getText()));
                 break;
             case SQRT:
-
+                result = Math.sqrt(Double.parseDouble(mainLabel.getText()));
                 break;
         }
     }
