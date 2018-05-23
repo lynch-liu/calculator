@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainFrame {
     private final int PLUS = 1;
@@ -12,6 +14,7 @@ public class MainFrame {
     private final int SQRT = 7;
     private final int RM = 8;
     private final int NOOP = 0;
+    private List<String> resultTable = new ArrayList<>();
     private JPanel panel1;
     private JButton oneButton;
     private JButton xAssignButton;
@@ -72,7 +75,7 @@ public class MainFrame {
         historyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO:History window below
+                History.run(resultTable);
             }
         });
 
@@ -365,40 +368,49 @@ public class MainFrame {
             case PLUS:
                 if (havePrev) {
                     result = prev + Double.parseDouble(mainLabel.getText());
+                    resultTable.add(prev+"+"+Double.parseDouble(mainLabel.getText())+"="+result);
                 }
                 break;
             case MINUS:
                 if (havePrev) {
                     result = prev - Double.parseDouble(mainLabel.getText());
+                    resultTable.add(prev+"-"+Double.parseDouble(mainLabel.getText())+"="+result);
                 }
                 break;
             case MULTIPLY:
                 if (havePrev) {
                     result = prev * Double.parseDouble(mainLabel.getText());
+                    resultTable.add(prev+"x"+Double.parseDouble(mainLabel.getText())+"="+result);
                 }
                 break;
             case DIVID:
                 if (havePrev) {
                     result = prev / Double.parseDouble(mainLabel.getText());
+                    resultTable.add(prev+"/"+Double.parseDouble(mainLabel.getText())+"="+result);
                 }
                 break;
             case RM:
                 if (havePrev) {
                     result = prev % Double.parseDouble(mainLabel.getText());
+                    resultTable.add(prev+"%"+Double.parseDouble(mainLabel.getText())+"="+result);
                 }
                 break;
             case SQ:
                 result = (Double.parseDouble(mainLabel.getText())) * (Double.parseDouble(mainLabel.getText()));
+                resultTable.add(Double.parseDouble(mainLabel.getText())+"^2="+result);
                 break;
             case CB:
                 result = (Double.parseDouble(mainLabel.getText())) * (Double.parseDouble(mainLabel.getText())) * (Double.parseDouble(mainLabel.getText()));
+                resultTable.add(Double.parseDouble(mainLabel.getText())+"^3="+result);
                 break;
             case SQRT:
                 result = Math.sqrt(Double.parseDouble(mainLabel.getText()));
+                resultTable.add(Double.parseDouble(mainLabel.getText())+"^0.5="+result);
                 break;
             default:
                 break;
         }
+
     }
 
     private void showResult() {
