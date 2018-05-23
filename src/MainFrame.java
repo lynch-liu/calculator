@@ -60,8 +60,6 @@ public class MainFrame {
     private boolean haveZ = false;
     private int operation = 0;
     private boolean haveDot = false;
-
-
     public static void main(String[] args) {
         JFrame frame = new JFrame("MainFrame");
         frame.setContentPane(new MainFrame().panel1);
@@ -69,19 +67,12 @@ public class MainFrame {
         frame.pack();
         frame.setVisible(true);
     }
-
     public MainFrame() {
         mainLabel.disable();
-        historyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                History.run(resultTable);
-            }
-        });
 
-        /////////////////////////////////////////////////////
-        // assign and recall function for X Y Z
-        /////////////////////////////////////////////////////
+        /////////////////////////////////////////
+        // assign and recall function for X Y Z//
+        /////////////////////////////////////////
         xAssignButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -135,9 +126,9 @@ public class MainFrame {
                 }
             }
         });
-        /////////////////////////////////////////////////////
-        //Function buttons
-        /////////////////////////////////////////////////////
+        ////////////////////
+        //Function buttons//
+        ////////////////////
         plusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -253,7 +244,6 @@ public class MainFrame {
                 equalButtonPushed();
             }
         });
-        ////////////////////
         delButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -281,8 +271,15 @@ public class MainFrame {
                 clearButtonPushed();
             }
         });
-        //////////////////////////////////////////////////////////
-        //Digit Button will add a char to the mainLabel
+        historyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                History.run(resultTable);
+            }
+        });
+        /////////////////////////////////////////////////
+        //Digit Button will add a char to the mainLabel//
+        /////////////////////////////////////////////////
         oneButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -352,11 +349,8 @@ public class MainFrame {
                 }
             }
         });
-
-
     }
-
-    //update result value
+    //update result value and show it
     private void updateResult() {
         if (mainLabel.getText().charAt(mainLabel.getText().length() - 1) == '.'){
             mainLabel.setText(mainLabel.getText() + "0");
@@ -412,11 +406,9 @@ public class MainFrame {
         }
 
     }
-
     private void showResult() {
         mainLabel.setText(result + "");
     }
-
     //add a String to the mainLabel
     private void addTextToField(String s) {
         if (haveDot) {
@@ -439,16 +431,14 @@ public class MainFrame {
             showResult();
         }
     }
-    //clearbutton's action
+    //clearbutton action
     private void clearButtonPushed() {
         clearLabel();
         havePrev = false;
         operation = NOOP;
     }
-
     private void clearLabel() {
         mainLabel.setText("");
         haveDot = false;
     }
-
 }
